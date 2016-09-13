@@ -12,7 +12,7 @@ public static void main(String[] args) {
     double inputA, inputB;
     char operator;
     boolean done = false;
-
+     
      while (done == false) {
         System.out.print("Please enter your sum: ");
 
