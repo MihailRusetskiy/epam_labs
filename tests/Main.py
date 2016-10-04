@@ -36,8 +36,8 @@ def register(driver, domain):
 
 def login(driver, domain):
     try:
-        username = "mihail.gentuu@yandex.ru"
-        password = "JVUa0rpR8f"
+        username = ""
+        password = ""
 
         driver.get(domain)
 
