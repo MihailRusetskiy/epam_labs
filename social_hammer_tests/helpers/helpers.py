@@ -1,5 +1,6 @@
 import random
 import string
+import time
 import os
 from django.core.serializers import json
 from selenium.webdriver.common.action_chains import ActionChains
@@ -7,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 
 
+domain = "http://new.socialhammer.com"
 domains = [ "hotmail.com", "gmail.com", "aol.com", "mail.com" , "mail.ru", "yahoo.com"]
 letters = string.ascii_lowercase[:12]
 
@@ -96,3 +98,29 @@ def clear_directory(directory):
 
 def call_func(func, driver, domain):
     return func(driver, domain)
+
+
+def register():
+    driver = create_webdriver()
+
+    driver.get(domain)
+
+    register_button = driver.find_element_by_class_name("btn-danger")
+    register_button.click()
+
+    agree_rules_checkbox = driver.find_element_by_class_name("checkbox").find_element_by_tag_name("input")
+    agree_rules_checkbox.click()
+
+    input_email = driver.find_elements_by_class_name("form-control")[1]
+    input_email.send_keys(generate_random_emails(1, 7)[0])
+
+    register_button = driver.find_elements_by_class_name("btn-block")[1]
+    register_button.click()
+
+    time.sleep(2)
+    register_phone_button = driver.find_element_by_id("form_register_phone").find_element_by_class_name("btn-block")
+    register_phone_button.click()
+
+    time.sleep(2)
+
+    return driver
