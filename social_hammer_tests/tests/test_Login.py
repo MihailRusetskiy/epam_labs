@@ -7,8 +7,8 @@ class Login(unittest.TestCase):
 
     def test_login(self):
         from helpers.helpers import domain
-        username = "mihail.gentuu@yandex.ru"
-        password = "JVUa0rpR8f"
+        username = ""
+        password = ""
 
         driver = create_webdriver()
         driver.get(domain)
