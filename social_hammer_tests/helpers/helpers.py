@@ -6,6 +6,7 @@ from django.core.serializers import json
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
+from helpers.proxy import *
 
 
 domain = "http://new.socialhammer.com"
@@ -17,6 +18,27 @@ def create_webdriver():
     try:
         driver = webdriver.Chrome('/usr/bin/chromedriver')
 
+
+    except Exception:
+        print("cant open navigator")
+
+    else:
+        return driver
+
+
+def create_webdriver_with_proxy(host, port, login, password):
+    try:
+        proxyauth_plugin_path = create_proxyauth_extension(
+            proxy_host=host,
+            proxy_port=int(port),
+            proxy_username=login,
+            proxy_password=password
+        )
+
+        co = Options()
+        co.add_extension(proxyauth_plugin_path)
+
+        driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=co)
 
     except Exception:
         print("cant open navigator")
