@@ -2,12 +2,11 @@ import random
 import string
 import time
 import os
-from django.core.serializers import json
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
-from helpers.proxy import *
 
+from Utils.compare_images import MonitorPicture
 
 domain = "http://new.socialhammer.com"
 domains = [ "hotmail.com", "gmail.com", "aol.com", "mail.com" , "mail.ru", "yahoo.com"]
@@ -18,27 +17,6 @@ def create_webdriver():
     try:
         driver = webdriver.Chrome('/usr/bin/chromedriver')
 
-
-    except Exception:
-        print("cant open navigator")
-
-    else:
-        return driver
-
-
-def create_webdriver_with_proxy(host, port, login, password):
-    try:
-        proxyauth_plugin_path = create_proxyauth_extension(
-            proxy_host=host,
-            proxy_port=int(port),
-            proxy_username=login,
-            proxy_password=password
-        )
-
-        co = Options()
-        co.add_extension(proxyauth_plugin_path)
-
-        driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=co)
 
     except Exception:
         print("cant open navigator")
@@ -122,27 +100,20 @@ def call_func(func, driver, domain):
     return func(driver, domain)
 
 
-def register():
-    driver = create_webdriver()
+def push_random_int(min, max, collection):
+    n = random.randint(min, max)
+    collection.append(n)
+    return n
 
-    driver.get(domain)
 
-    register_button = driver.find_element_by_class_name("btn-danger")
-    register_button.click()
+def compare_video_screens(screens):
+    image_number = len(screens) - 1
+    compare_images_res = 1
 
-    agree_rules_checkbox = driver.find_element_by_class_name("checkbox").find_element_by_tag_name("input")
-    agree_rules_checkbox.click()
+    while image_number:
 
-    input_email = driver.find_elements_by_class_name("form-control")[1]
-    input_email.send_keys(generate_random_emails(1, 7)[0])
-
-    register_button = driver.find_elements_by_class_name("btn-block")[1]
-    register_button.click()
-
-    time.sleep(2)
-    register_phone_button = driver.find_element_by_id("form_register_phone").find_element_by_class_name("btn-block")
-    register_phone_button.click()
-
-    time.sleep(2)
-
-    return driver
+        compare_images_res = MonitorPicture(screens[image_number], screens[image_number - 1])
+        image_number -= 1
+        if compare_images_res:
+            break
+    return compare_images_res
