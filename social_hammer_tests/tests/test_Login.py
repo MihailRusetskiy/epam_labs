@@ -4,12 +4,12 @@ from Steps.AccountSteps import *
 from Steps.SettingSteps import *
 
 
-username = "mihail.gentuu@yandex.ru"
-password = "JVUa0rpR8f"
+username = ""
+password = ""
 
 class SocialHammerTests(unittest.TestCase):
 
-    """def test_register(self):
+    def test_register(self):
         name = get_random_string(5)
         email = generate_random_emails(1, 7)[0]
         name = get_random_string(8)
@@ -73,7 +73,7 @@ class SocialHammerTests(unittest.TestCase):
         login(username, password)
         add_instagram_account(account, pwd)
         self.assertEqual(get_instagram_accounts(), account)
-    """
+    
 
     def test_add_vk_account(self):
         account = get_random_string(5)
@@ -82,12 +82,3 @@ class SocialHammerTests(unittest.TestCase):
         login(username, password)
         add_vk_account(account, pwd)
         self.assertEqual(get_vk_accounts(), account)
-
-
-
-
-
-
-
-
-
