@@ -2,7 +2,7 @@ import unittest
 from Steps.Steps import *
 from Steps.AccountSteps import *
 from Steps.SettingSteps import *
-hh
+
 
 username = ""
 password = ""
