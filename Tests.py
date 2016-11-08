@@ -3,8 +3,8 @@ from Steps.Steps import *
 from Steps.AccountSteps import *
 from Steps.SettingSteps import *
 
-username = "mihail.gentuu@yandex.ru"
-password = "JVUa0rpR8f"
+username = ""
+password = ""
 
 
 class SocialHammerTests(unittest.TestCase):
