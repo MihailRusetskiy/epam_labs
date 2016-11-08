@@ -1,1 +1,1 @@
-echo $WORKSPACE
+python $WORKSPACE/tests/Tests.py
