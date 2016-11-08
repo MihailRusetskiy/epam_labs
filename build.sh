@@ -1,1 +1,1 @@
-python $workspace/tests/Tests.py
+python ./tests/Tests.py
