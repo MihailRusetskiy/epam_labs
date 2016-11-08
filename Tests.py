@@ -6,7 +6,7 @@ from Steps.SettingSteps import *
 username = ""
 password = ""
 
-
+5
 class SocialHammerTests(unittest.TestCase):
 
     def test1_register(self):
