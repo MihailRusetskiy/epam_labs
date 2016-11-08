@@ -1,1 +1,1 @@
-ls $WORKSPACE
+ls /
