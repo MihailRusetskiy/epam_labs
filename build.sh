@@ -1,1 +1,1 @@
-python ./tests/Tests.py
+python ws/tests/Tests.py
