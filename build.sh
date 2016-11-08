@@ -1,1 +1,1 @@
-python3.4 ./tests/Tests.py
+python ./tests/Tests.py
