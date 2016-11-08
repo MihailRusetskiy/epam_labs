@@ -1,1 +1,1 @@
-python $WORKSPACE/tests/Tests.py
+ls $WORKSPACE
