@@ -1,1 +1,1 @@
-python /var/lib/jenkins/jobs/workspace/socialhammer/tests/Tests.py
+python /var/lib/jenkins/workspace/socialhammer/tests/Tests.py
