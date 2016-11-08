@@ -1,1 +1,1 @@
-dir -l   
+echo $WORKSPACE
